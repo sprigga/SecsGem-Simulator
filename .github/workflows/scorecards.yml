@@ -51,7 +51,7 @@ jobs:
       - name: "Upload artifact"
         uses: actions/upload-artifact@6673cd052c4cd6fcf4b4e6e60ea986c889389535 # v3.0.0
         with:
-          name: scorecards-sarif
+          name: scorecards_sarif
           path: results.sarif
           retention-days: 5
       
