@@ -1,11 +1,11 @@
 """Secs scripting objects."""
 import pathlib
 import site
+import subprocess
 import sys
 import typing
 
 import appdirs  # type: ignore
-import pip  # type: ignore
 
 from secsgem_simulator.secsgem_package_0_1 import SecsgemPackage01
 from secsgem_simulator.secsgem_package_base import SecsgemPackage
@@ -80,6 +80,10 @@ class SecsgemPackages:  # pylint: disable=too-few-public-methods
 
         # install secsgem version if not installed
         if not package_version_dir.is_dir():
-            pip.main(["install", "--target", str(package_version_dir), f"secsgem=={version}"])
+            subprocess.run(
+                [sys.executable, "-m", "pip", "install", "--target", str(package_version_dir), f"secsgem=={version}"],
+                check=True,
+                capture_output=True,
+            )
 
         return package_version_dir

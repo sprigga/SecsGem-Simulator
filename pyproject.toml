@@ -1,23 +1,27 @@
-[tool.poetry]
+[project]
 name = "secsgem_simulator"
 version = "0.1.0"
 description = "Simulator to test secsgem protocol layer"
-authors = ["Benjamin Parzella <bparzella@gmail.com>"]
+authors = [
+    {name = "Benjamin Parzella", email = "bparzella@gmail.com"}
+]
+requires-python = ">=3.7"
+dependencies = [
+    "lupa>=1.13",
+    "appdirs>=1.4.4",
+]
 
-[tool.poetry.scripts]
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.1",
+    "prospector[with_mypy]>=1.7.7",
+    "radon>=5.1.0",
+    "tox>=3.25.1",
+]
+
+[project.scripts]
 sgsim = "secsgem_simulator.cli:main"
 
-[tool.poetry.dependencies]
-python = "^3.7"
-lupa = "^1.13"
-appdirs = "^1.4.4"
-
-[tool.poetry.dev-dependencies]
-pytest = "^7.1"
-prospector = {version = "^1.7.7", extras = ["with_mypy"]}
-radon = "^5.1.0"
-tox = "^3.25.1"
-
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"

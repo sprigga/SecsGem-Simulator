@@ -20,6 +20,7 @@ SERVER_ARGS: typing.List[typing.Dict[str, typing.Any]] = [
         "name": "--port",
         "default": 4000,
         "dest": "server_port",
+        "type": int,
         "help": "server port number",
     },
 ]
